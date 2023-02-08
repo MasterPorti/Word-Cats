@@ -32,7 +32,7 @@ const GetImagen = ({ stop, word, setError, wordCustom, customWord }) => {
       <p className='font-bold text-5xl max-[600px]:text-2xl text-center'>Generate Your Imagen</p>
       <p>Press get cat to generate your imagen</p>
       {load && <img src={loading} className='max-h-[30vh]' />}
-      <img src={imagen || Defaul} onLoad={handleLoad} className={`max-h-[30vh] ${stop ? '' : 'saturate-0'} ${load ? 'opacity-0 absolute' : ''}`} />
+      <img src={imagen || Defaul} alt='Imagen of cats ' onLoad={handleLoad} className={`max-h-[30vh] ${stop ? '' : 'saturate-0'} ${load ? 'opacity-0 absolute' : ''}`} />
       <button onClick={handleSetImg} className={`${stop ? '' : 'saturate-0'} mt-3 bg-pink-500 text-white font-semibold px-9 py-2 text-lg rounded-xl`}>Get Cat</button>
     </div>
   )
