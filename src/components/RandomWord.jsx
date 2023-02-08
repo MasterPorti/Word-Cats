@@ -40,7 +40,7 @@ function RandomWord ({ word, setWord, stop, setStop, error, setError }) {
   const customWordHandler = () => {
     setToggleButton(!toggleButton)
     setCustomWord(!customWord)
-    setStop(!stop)
+    setStop(false)
     setTimeout(() => setWord(''), 1000)
   }
 
