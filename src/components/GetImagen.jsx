@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Defaul from '../assets/catsDefaul.gif'
 import loading from '../assets/loading.gif'
 
-const GetImagen = ({ stop, word, setError }) => {
+const GetImagen = ({ stop, word, setError, wordCustom, customWord }) => {
   const [imagen, setImagen] = useState('')
   const [load, setLoad] = useState(false)
 
@@ -12,13 +12,14 @@ const GetImagen = ({ stop, word, setError }) => {
 
   const handleSetImg = () => {
     if (stop) {
-      if (word.length === 0) {
+      const wordToUse = customWord ? wordCustom : word
+      if (wordToUse.length === 0) {
         setError(true)
       } else {
         setError(false)
         setLoad(true)
         const number = randomNumber()
-        setImagen(`https://cataas.com/cat/gif/says/${word}?${number}`)
+        setImagen(`https://cataas.com/cat/gif/says/${wordToUse}?${number}`)
       }
     }
   }

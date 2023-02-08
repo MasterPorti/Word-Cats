@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-function RandomWord ({ word, setWord, stop, setStop, error, setError }) {
+function RandomWord ({ word, setWord, stop, setStop, error, setError, setWordCustom, wordCustom, customWord, setCustomWord }) {
   const fakeWord = ['%^&*#)', '@!+$~{}', '[]<>;:', '/^?|/', '!@#$%&*(', '^%$#@!)', '&+_{}<>', '$%#@!&*', '(^&%$#@)']
   const [button, setButton] = useState('Generate')
-  const [customWord, setCustomWord] = useState(false)
   const [toggleButton, setToggleButton] = useState(false)
 
   useEffect(() => {
@@ -40,11 +39,12 @@ function RandomWord ({ word, setWord, stop, setStop, error, setError }) {
   const customWordHandler = () => {
     setToggleButton(!toggleButton)
     setCustomWord(!customWord)
-    setStop(false)
+    setStop(true)
     setTimeout(() => setWord(''), 1000)
   }
 
   const customRandomHandler = () => {
+    setCustomWord('')
     setError(false)
     setToggleButton(false)
     setCustomWord(!customWord)
@@ -58,7 +58,7 @@ function RandomWord ({ word, setWord, stop, setStop, error, setError }) {
       <p className='text-center'>Press generate to get your word or press 'My word' to type your word</p>
       <div className='flex items-center gap-2'>
         {!customWord && <p placeholder='#*$&8' className='text-center bg-transparent border-b-4 text-5xl outline-none border-blue-500 w-[20rem] h-[4rem] max-[600px]:h-[3rem] max-[600px]:w-[50vw] max-[600px]:text-3xl'>{word}</p>}
-        {customWord && <input placeholder='#*$&8' className='text-center bg-transparent border-b-4 text-5xl outline-none border-pink-500 w-[20rem] h-[4rem] max-[600px]:h-[3rem] max-[600px]:w-[50vw] max-[600px]:text-3xl' value={word} onChange={(e) => setWord(e.target.value)} />}
+        {customWord && <input placeholder='#*$&8' className='text-center bg-transparent border-b-4 text-5xl outline-none border-pink-500 w-[20rem] h-[4rem] max-[600px]:h-[3rem] max-[600px]:w-[50vw] max-[600px]:text-3xl' value={wordCustom} onChange={(e) => setWordCustom(e.target.value)} />}
         {customWord &&
           <button
             onClick={customRandomHandler}
